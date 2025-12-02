@@ -11,9 +11,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-
 import java.time.LocalDateTime;
-import java.util.Date;
 
 @Entity
 @Table(name = "clientes")
@@ -38,7 +36,7 @@ public class ClienteModels {
     @Embedded
     private EnderecoModels endereco;
 
-    @Column(nullable = false, name = "data_cadastrogit ")
+    @Column(nullable = false, name = "data_cadastro")
     private LocalDateTime dataCadastro; //precisa gerar automaticamente
 
     @Column(nullable = false)
