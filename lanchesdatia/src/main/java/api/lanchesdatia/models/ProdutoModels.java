@@ -1,3 +1,4 @@
+// define as entidades
 package api.lanchesdatia.models;
 
 import jakarta.persistence.Column;
