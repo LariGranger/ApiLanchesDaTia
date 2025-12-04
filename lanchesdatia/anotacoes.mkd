@@ -1,0 +1,14 @@
+- [x] criar ProdutoModels
+- [x] criar ClienteModels
+- [x] criar EnderecoModels
+- [x] criar ClientesRepository
+- [x] criar ProdutRepository
+- [] criar ClientesService
+- [x] criar ProdutService
+- [] criar ClientesController
+- [] criar ProdutController
+- [] criar conexão com banco
+- [] criar frontEnd
+- [] criar postman (JSON)
+- [] criar projeto com bootstrap
+

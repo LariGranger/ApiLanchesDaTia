@@ -24,17 +24,17 @@ public class ProdutoModels {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false)
+    @Column(nullable = false, unique = true)
     private String nome;
 
     @Column(nullable = false)
     private String categoria;
 
-    @Column(nullable = false)
+    @Column(nullable = false) 
     private double preco;
 
     @Column(nullable = false)
-    private boolean disponivel;
+    private boolean disponivel = true;
 
     @Column(nullable = false)
     private int tempoPreparo;

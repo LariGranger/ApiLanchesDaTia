@@ -1,4 +1,3 @@
-//refatorar
 // classe para controlar a lógica de negócio, regras, cálculos, validações, fluxos, tratamento de erros, integração com outras partes
 // conversa com o repository e diz o que fazer
 package api.lanchesdatia.services;
@@ -6,31 +5,46 @@ package api.lanchesdatia.services;
 import org.springframework.beans.factory.annotation.Autowired;
 
 public class ProdutoServices {
-@Autowired
-    private LanchesRepository lancheRepository;
+    @Autowired
+    private ProdutoRepository produtoRepository;
 
-    public List<Lanche> listarTodos(){
-        return lancheRepository.findAll();
+    //listar todos
+    public List<ProdutoModels> listarTodos(){
+        if(disponivel){
+            return produtoRepository.findAll();
+        }
     }
 
-    public Lanche buscarPorId(Long id){
-        Optional<Lanche> lanche = lancheRepository.findById(id);
+    //listar indisponiveis
+    public List<ProdutoModels> listarIndisponiveis(){
+        if(!disponiveis){
+            return produtoRepository.findAll();
+        }
+    }
+
+
+    //buscar por id
+    public ProdutoModels buscarPorId(Long id){
+        Optional<ProdutoModels> produto = produtoRepository.findById(id);
         return lanche.orElse(null);
     }
     
-    public List<Lanche> buscarPorCategoria(String categoria){
-        Optional<Lanche> lanchesPorCategoria = Optional.ofNullable(lancheRepository.findByCategoria(categoria));
-        return (List<Lanche>) lanchesPorCategoria.orElse(null);
+    //buscar por categoria
+    public List<ProdutoModels> buscarPorCategoria(String categoria){
+        Optional<ProdutoModels> produtosPorCategoria = Optional.ofNullable(produtoRepository.findByCategoria(categoria));
+        return (List<ProdutoModels>) produtosPorCategoria.orElse(null);
     }
 
-    public Lanche adicionarLanche(Lanche lanche){
-        return lancheRepository.save(lanche);
+    //adicionar produto
+    public ProdutoModels adicionarProduto(ProdutoModels lanche){
+        return produtoRepository.save(lanche);
     }
 
-    public Lanche atualizarLanche(Long id, String nome, String descricao, double preco, String categoria, boolean disponivel, int tempoPreparo, Lanche lancheAtualizado){
-        Optional<Lanche> lancheExiste;
+    //atualizar produto
+    public ProdutoModels atualizarProduto(Long id, String nome, String descricao, double preco, String categoria, boolean disponivel, int tempoPreparo, Lanche lancheAtualizado){
+        Optional<ProdutoModels> lancheExiste;
         if(lancheExiste.isPresent()){
-            Lanche lanche = lancheExiste.get();
+            ProdutoModels lanche = lancheExiste.get();
             lanche.setNome(lancheAtualizado.getNome());
             lanche.setDescricao(lancheAtualizado.getDescricao());
             lanche.setPreco(lancheAtualizado.getPreco());
@@ -39,7 +53,9 @@ public class ProdutoServices {
             lanche.setNome(lancheAtualizado.getNome());
         }
     }
-    public void deletarLanche(Long id){
-            lancheRepository.deleteById(id);
+
+    //deletar lanche
+    public void deletarProduto(Long id){
+            produtoRepository.deleteById(id);
     }
 }

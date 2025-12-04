@@ -28,16 +28,16 @@ public class ClienteModels {
     private String nomeCompleto;
 
     @Column(nullable = false)
-    private String email; //precisa validar
+    private String email;
 
-    @Column(nullable = false)
-    private String telefone; //precisa validar
+    @Column(nullable = false, unique = true)
+    private String telefone; 
 
     @Embedded
     private EnderecoModels endereco;
 
     @Column(nullable = false, name = "data_cadastro")
-    private LocalDateTime dataCadastro; //precisa gerar automaticamente
+    private LocalDateTime dataCadastro; 
 
     @Column(nullable = false)
     private boolean ativo = true;
@@ -46,11 +46,11 @@ public class ClienteModels {
     private String preferencias;
 
     @Column
-    private String historicoCompras; //a ser implementado depois
+    private String historicoCompras;
 
-    @Column(unique = true)
-    private String cpf; //a validar
+    @Column(unique = true, nullable = false)
+    private String cpf;
 
     @Column
-    private String pedidos; //pedidos associado ao cliente
+    private String pedidos; 
 }
